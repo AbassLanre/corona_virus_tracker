@@ -11,7 +11,7 @@ class ApiBaseHelper{
     var responseJson;
 
     try {
-      final response = await http.get(url );
+      final response = await http.get(Uri.parse(url));
       responseJson = _returnResponse(response);
     } on SocketException{
       print('No net');
@@ -25,7 +25,7 @@ class ApiBaseHelper{
     switch (response.statusCode){
       case 200:
         var responseJson = json.decode(response.body.toString());
-        print(responseJson);
+        // print('200 $responseJson');
         return responseJson;
       case 400:
         throw BadRequestException(response.body.toString());
