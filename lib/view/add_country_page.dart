@@ -1,3 +1,4 @@
+import 'package:corona_virus_tracker/view/firstNavigation.dart';
 import 'package:flutter/material.dart';
 
 class AddCountryPage extends StatefulWidget {
@@ -32,9 +33,11 @@ class _AddCountryPageState extends State<AddCountryPage> {
                         child: Row(
                           children: [
                             GestureDetector(
-                                onTap: ()=> Navigator.pop(context),
+                                onTap: () => Navigator.pop(context),
                                 child: Icon(Icons.arrow_back)),
-                            SizedBox(width: 50,),
+                            SizedBox(
+                              width: 50,
+                            ),
                             Text(
                               'Add Country',
                             ),
@@ -66,20 +69,32 @@ class _AddCountryPageState extends State<AddCountryPage> {
                 ),
               ],
             ),
-            SizedBox(height: 10,),
-
+            SizedBox(
+              height: 10,
+            ),
             ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: widget.countryList.length,
-                itemBuilder: (_,position){
-                  return ListTile(
-                    leading: CircleAvatar(
-                      radius: 15,
-                      backgroundImage: NetworkImage(widget.flag[position]),
-                      backgroundColor: Colors.transparent,
+                itemBuilder: (_, position) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => FirstNavigation(
+                                    countryToBeDisplayed:
+                                        widget.countryList[position],
+                                  )));
+                    },
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        radius: 15,
+                        backgroundImage: NetworkImage(widget.flag[position]),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      title: Text(widget.countryList[position]),
                     ),
-                    title: Text(widget.countryList[position]),
                   );
                 })
           ],
