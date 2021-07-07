@@ -4,8 +4,7 @@ import 'package:corona_virus_tracker/view/add_country_page.dart';
 import 'package:corona_virus_tracker/view/country_page.dart';
 import 'package:corona_virus_tracker/view/secondNavigation.dart';
 import 'package:corona_virus_tracker/view/thirdNavigation.dart';
-import 'package:draw_graph/draw_graph.dart';
-import 'package:draw_graph/models/feature.dart';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
